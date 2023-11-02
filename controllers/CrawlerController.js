@@ -12,24 +12,30 @@ class CrawlerController {
      */
     async crawlDetailPage(req, res, next) {
         // Launch the browser in production
-        var browser = '';
-        if (process.env.NODE_DEV === 'PROD') {
-            browser = await puppeteer.launch({
-                args: ['--no-sandbox', '--disable-setuid-sandbox', 'single-process', '--no-zygote'],
-                executablePath: process.env.NODE_ENV === 'production'
-                    ? process.env.PUPPETEER_EXECUTABLE_PATH
-                    : puppeteer.executablePath(),
-            });
-        }
+        // var browser = '';
+        // if (process.env.NODE_DEV === 'PROD') {
+        //     browser = await puppeteer.launch({
+        //         args: ['--no-sandbox', '--disable-setuid-sandbox', 'single-process', '--no-zygote'],
+        //         executablePath: process.env.NODE_ENV === 'production'
+        //             ? process.env.PUPPETEER_EXECUTABLE_PATH
+        //             : puppeteer.executablePath(),
+        //     });
+        // }
 
-        // Launch the browser in dev
-        if (process.env.NODE_DEV === 'DEV') {
-            browser = await puppeteer.launch({
-                userDataDir: './tmp',
-                headless: true
-            });
-        }
+        // // Launch the browser in dev
+        // if (process.env.NODE_DEV === 'DEV') {
+        //     browser = await puppeteer.launch({
+        //         userDataDir: './tmp',
+        //         headless: true
+        //     });
+        // }
 
+        const browser = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox', 'single-process', '--no-zygote'],
+            executablePath: process.env.NODE_ENV === 'production'
+                ? process.env.PUPPETEER_EXECUTABLE_PATH
+                : puppeteer.executablePath(),
+        });
         // Navigate the page to a URL
         const page = await browser.newPage();
         await page.goto('https://ssports.iqiyi.com/news/67561020', {
@@ -68,24 +74,30 @@ class CrawlerController {
      */
     async crawlMultiplePost(req, res, next) {
         // Launch the browser in production
-        var browser = '';
-        if (process.env.NODE_DEV === 'PROD') {
-            browser = await puppeteer.launch({
-                args: ['--no-sandbox', '--disable-setuid-sandbox', 'single-process', '--no-zygote'],
-                executablePath: process.env.NODE_ENV === 'production'
-                    ? process.env.PUPPETEER_EXECUTABLE_PATH
-                    : puppeteer.executablePath(),
-            });
-        }
+        // var browser = '';
+        // if (process.env.NODE_DEV === 'PROD') {
+        //     browser = await puppeteer.launch({
+        //         args: ['--no-sandbox', '--disable-setuid-sandbox', 'single-process', '--no-zygote'],
+        //         executablePath: process.env.NODE_ENV === 'production'
+        //             ? process.env.PUPPETEER_EXECUTABLE_PATH
+        //             : puppeteer.executablePath(),
+        //     });
+        // }
 
-        // Launch the browser in dev
-        if (process.env.NODE_DEV === 'DEV') {
-            browser = await puppeteer.launch({
-                userDataDir: './tmp',
-                headless: true
-            });
-        }
+        // // Launch the browser in dev
+        // if (process.env.NODE_DEV === 'DEV') {
+        //     browser = await puppeteer.launch({
+        //         userDataDir: './tmp',
+        //         headless: true
+        //     });
+        // }
 
+        const browser = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox', 'single-process', '--no-zygote'],
+            executablePath: process.env.NODE_ENV === 'production'
+                ? process.env.PUPPETEER_EXECUTABLE_PATH
+                : puppeteer.executablePath(),
+        });
         // Navigate the page to a URL
         const page = await browser.newPage();
         await page.goto('https://ssports.iqiyi.com', {
